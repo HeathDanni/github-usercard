@@ -6,13 +6,14 @@ import axios from 'axios';
     https://api.github.com/users/<your name>
 */
 axios
-  .get(https://api.github.com/users/HeathDanni);
-  .then(() => {
-
-  })
-  .catch(() => {
+  .get(`https://api.github.com/users/HeathDanni`)
+  .then((res) => {
+    console.log('Here is the res: ', res);
     
   })
+  .catch((err) => {
+    console.log('Here is the err: ', err);
+  });
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -58,7 +59,26 @@ const followersArray = [];
       </div>
     </div>
 */
+ function cardMaker(data) {
+   const cardDiv = document.createElement('div');
+   const cardImage = document.createElement('img');
+   const cardInfo = document.createElement('div');
+   const cardName = document.createElement('h3');
+   const userName = document.createElement('p')
+   const userLocation = document.createElement('p');
+   const userProfile = document.createElement('p');
+   const cardLink = document.createElement('a');
+   const followers = document.createElement('p');
+   const following = document.createElement('p');
+   const userBio = document.createElement('p');
 
+   cardDiv.classList.add('card');
+   cardInfo.classList.add('card-info');
+   cardName.classList.add('name');
+   userName.classList.add('username');
+
+   
+ }
 /*
   List of LS Instructors Github username's:
     tetondan

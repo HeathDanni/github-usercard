@@ -59,7 +59,7 @@ const followersArray = [];
       </div>
     </div>
 */
- function cardMaker(data) {
+ function cardMaker(obj) {
    const cardDiv = document.createElement('div');
    const cardImage = document.createElement('img');
    const cardInfo = document.createElement('div');
@@ -77,8 +77,31 @@ const followersArray = [];
    cardName.classList.add('name');
    userName.classList.add('username');
 
-   
+   cardImage.src = obj.data.avatar_url;
+   cardName.textContent = obj.data.name;
+   userName.textContent = obj.data.login;
+   userLocation.textContent = obj.data.location;
+   userProfile.textContent = `Profile: `;
+   cardLink.textContent = obj.config;
+   followers.textContent = obj.data.followers;
+   following.textContent = obj.data.following;
+   userBio.textContent = obj.data.bio;
+
+   cardDiv.appendChild(cardImage);
+   cardDiv.appendChild(cardInfo);
+   cardInfo.appendChild(cardName);
+   cardInfo.appendChild(cardName);
+   cardInfo.appendChild(userName);
+   cardInfo.appendChild(userLocation);
+   cardInfo.appendChild(userProfile);
+   userProfile.appendChild(cardLink);
+   cardInfo.appendChild(followers);
+   cardInfo.appendChild(following);
+   cardInfo.appendChild(userBio);
+
+   return cardDiv;
  }
+
 /*
   List of LS Instructors Github username's:
     tetondan

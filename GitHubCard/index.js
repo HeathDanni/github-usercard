@@ -5,15 +5,19 @@ import axios from 'axios';
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
-axios
-  .get(`https://api.github.com/users/HeathDanni`)
-  .then((res) => {
-    console.log('Here is the res: ', res);
-    
-  })
-  .catch((err) => {
-    console.log('Here is the err: ', err);
-  });
+
+// axios
+//   .get(`https://api.github.com/users/HeathDanni`)
+//   .then(res => {
+//     console.log(res);
+
+//       card.append(cardMaker(url));
+// })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -83,9 +87,9 @@ const followersArray = [];
    userLocation.textContent = obj.data.location;
    userProfile.textContent = `Profile: `;
    cardLink.textContent = obj.config;
-   followers.textContent = obj.data.followers;
-   following.textContent = obj.data.following;
-   userBio.textContent = obj.data.bio;
+   followers.textContent = `Followers : ${obj.data.followers}`;
+   following.textContent = `Following: ${obj.data.following}`;
+   userBio.textContent = `Bio: ${obj.data.bio}`;
 
    cardDiv.appendChild(cardImage);
    cardDiv.appendChild(cardInfo);
@@ -99,8 +103,24 @@ const followersArray = [];
    cardInfo.appendChild(following);
    cardInfo.appendChild(userBio);
 
+   console.log(cardDiv);
+
    return cardDiv;
  }
+
+const cardItem = document.querySelector('.cards');
+
+axios
+  .get(`https://api.github.com/users/HeathDanni`)
+  .then(res => {
+    console.log(res);
+    let resCard = cardMaker(res);
+    console.log(resCard);
+    cardItem.append(resCard);
+})
+  .catch(err => {
+    console.log(err);
+  });
 
 /*
   List of LS Instructors Github username's:
